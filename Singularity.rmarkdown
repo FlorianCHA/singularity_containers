@@ -1,0 +1,24 @@
+BootStrap: docker
+From: ubuntu:18.04
+
+%post
+# Install R
+apt-get update
+apt-get install -y software-properties-common locales
+echo "fr_FR UTF-8" >> /etc/locale.gen
+echo "LANG=fr_FR.UTF-8" > /etc/locale.conf
+echo "Europe/Paris" > /etc/timezone
+LC_ALL=fr_FR.UTF-8
+echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+locale-gen fr_FR.UTF-8
+update-locale LANG=fr_FR.UTF-8 s
+apt-get update
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9
+add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/"
+apt-get update
+apt-get install -y libpng16-16 libblas3 libblas-dev liblapack-dev liblapack3 libreadline7 r-recommended r-doc-html
+apt install -y r-base-core
+## Install RMarkdown and TinyTeX
+R --slave -e 'install.packages(c("rmarkdown","tinytex"))'
+R --slave -e 'tinytex::install_tinytex()'
+
