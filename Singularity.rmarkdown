@@ -21,4 +21,3 @@ apt install -y r-base-core
 ## Install RMarkdown and TinyTeX
 R --slave -e 'install.packages(c("rmarkdown","tinytex"))'
 R --slave -e 'tinytex::install_tinytex()'
-

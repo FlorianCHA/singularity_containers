@@ -29,3 +29,6 @@ From: ubuntu:18.04
 
 # Intall ABySS
     apt -y install abyss
+
+%runscript
+    abyss-pe "$*"
