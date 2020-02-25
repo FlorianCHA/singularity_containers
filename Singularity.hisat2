@@ -1,0 +1,42 @@
+BootStrap: docker
+From: ubuntu:18.04
+
+%labels
+    Florian CHARRIAT - Hisat2 tools containers with samtools softare
+%help
+Run the hisat2 tools
+
+%post
+
+mkdir /tools
+# Install dependecies for toolsapt update
+    apt update
+    apt -y install make g++ libbz2-dev liblzma-dev git autoconf
+    apt install -y libncurses5-dev zlib1g-dev
+
+# Install hisat2
+    apt -y install hisat2
+
+# Install htslib for samtools
+    cd /tools/
+    git clone https://github.com/samtools/htslib.git
+    cd /tools/htslib
+    autoheader
+    autoconf
+    ./configure
+    make
+    make install
+
+# Install samtools
+    git clone https://github.com/samtools/samtools.git /tools/samtools
+    cd /tools/samtools
+    autoheader
+    autoconf -Wno-syntax
+    ./configure
+    make
+    make install
+    export TOOLDIR="/tools/"
+
+
+%runscript
+    hisat2 "$*"
