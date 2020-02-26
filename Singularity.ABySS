@@ -7,7 +7,7 @@ From: ubuntu:18.04
 %post
 
 # Install of R and Rmarckdown for report of Assembly pipeline
-
+    mkdir /tools
     ## Install dependance of R software
     apt update
     LC_ALL=fr_FR.UTF-8
@@ -30,9 +30,19 @@ From: ubuntu:18.04
 # Intall ABySS
     ## Instal dependecies
         apt install -y wget git bash gcc gfortran g++ make file bsdmainutils \
-        automake libboost-dev libsparsehash-dev openmpi-common  openmpi-bin
+        automake libboost-dev libsparsehash-dev openmpi-common openmpi-bin build-essential
 
-    apt -y install abyss
+    ## Build tools
+    cd /tools
+    wget https://github.com/bcgsc/abyss/releases/download/2.2.3/abyss-2.2.3.tar.gz
+    tar xvfz abyss-2.2.3.tar.gz
+    cd abyss-2.2.3
+    ./autogen.sh
+    mkdir build
+    cd build
+    ../configure
+    make install
+    #apt -y install abyss # Don't works, missing some binary files/
 
 %runscript
     abyss-pe "$*"
