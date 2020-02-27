@@ -29,10 +29,24 @@ From: ubuntu:18.04
 
 # Intall ABySS
     ## Instal dependecies
-        apt install -y wget git bash gcc gfortran g++ make file bsdmainutils \
-        automake libboost-dev libsparsehash-dev openmpi-common openmpi-bin build-essential
+    apt update && apt install -y wget git bash gcc gfortran g++ make file bsdmainutils \
+        automake libboost-dev libsparsehash-dev
 
-    ## Build tools
+    ## Installation OMPI
+    mkdir -p /temp/ompi
+    mkdir -p /tools/openmpi-v3/3.1.4
+    cd /temp/ompi
+    wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.4.tar.bz2
+    tar xjf openmpi-3.1.4.tar.bz2
+    cd /temp/ompi/openmpi-3.1.4
+    ./configure --prefix=/tools/openmpi-v3/3.1.4
+    make install
+    export PATH=/tools/openmpi-v3/3.1.4/bin:$PATH
+    export LD_LIBRARY_PATH=/tools/openmpi-v3/3.1.4/lib:$LD_LIBRARY_PATH
+    export MANPATH=/tools/openmpi-v3/3.1.4/share/man:$MANPATH
+
+
+    ## Build ABySS tools
     cd /tools
     wget https://github.com/bcgsc/abyss/releases/download/2.2.3/abyss-2.2.3.tar.gz
     tar xvfz abyss-2.2.3.tar.gz
@@ -40,9 +54,12 @@ From: ubuntu:18.04
     ./autogen.sh
     mkdir build
     cd build
-    ../configure
+    ../configure --with-mpi=/tools/openmpi-v3/3.1.4
     make install
-    #apt -y install abyss # Don't works, missing some binary files/
+
+%environment
+    export PATH=/tools/openmpi-v3/3.1.4/bin:$PATH
+
 
 %runscript
     abyss-pe "$*"
