@@ -1,0 +1,47 @@
+BootStrap: docker
+From: ubuntu:18.04
+
+%labels
+    Florian CHARRIAT - Beast v1.8 tools containers
+
+%post
+
+# Création directory for tools a update
+
+    apt update
+    apt install -y software-properties-common wget
+    mkdir /tools
+
+# Install dependencies for beast tools
+
+    apt update
+    apt install -y build-essential autoconf automake libtool git pkg-config
+    apt install -y openjdk-8-jre
+    apt install -y openjdk-8-jdk
+    cd /tools
+    git clone --depth=1 https://github.com/beagle-dev/beagle-lib.git
+    cd beagle-lib
+    ./autogen.sh
+    ./configure --prefix=/
+    make install
+    export LD_LIBRARY_PATH=/lib:$LD_LIBRARY_PATH
+    export PKG_CONFIG_PATH=/lib/pkgconfig:$PKG_CONFIG_PATH
+    apt install -y openjdk-8-jre
+    apt install -y openjdk-8-jdk
+
+
+
+
+# Install beast
+    cd /tools
+    wget https://github.com/beast-dev/beast-mcmc/releases/download/v1.8.4/BEASTv1.8.4.tgz
+    tar -zxvf BEASTv1.8.4.tgz
+
+%environment
+    export PATH=/tools/BEASTv1.8.4/bin:$PATH
+    export LD_LIBRARY_PATH=/lib:$LD_LIBRARY_PATH
+    export PKG_CONFIG_PATH=/lib/pkgconfig:$PKG_CONFIG_PATH
+
+
+%runscript
+    beast "$*"
