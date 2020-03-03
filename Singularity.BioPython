@@ -1,0 +1,21 @@
+BootStrap: docker
+From: ubuntu:18.04
+
+%labels
+    Florian CHARRIAT - Bio python containers
+
+
+%post
+
+    apt update -y
+
+# Installation python & dependencies
+    apt install -y python3.7 python3-pip
+    python3.7 -m pip install biopython
+
+
+%runscript
+    python3  "$*"
+
+
+
