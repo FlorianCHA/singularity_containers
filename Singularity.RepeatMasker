@@ -34,6 +34,11 @@ From: ubuntu:18.04
     make check
     make install
 
+    ## Instal RMblast
+    cd /usr/local
+    wget http://www.repeatmasker.org/rmblast-2.10.0+-x64-linux.tar.gz
+    tar zxvf rmblast-2.10.0+-x64-linux.tar.gz
+
     ## Install module perl
 
     cpan Text::Soundex
