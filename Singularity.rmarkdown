@@ -27,10 +27,10 @@ From: ubuntu:18.04
     ## Install RMarkdown and TinyTeX
     R --slave -e 'install.packages(c("rmarkdown","tinytex"))'
     R -e "install.packages('ggplot2')"
-    R -e "install.packages('DT')
-    R -e "install.packages('knitr')
-    R -e "install.packages('stringr')
-    R -e "install.packages('tidyverse')
-    R -e "install.packages('plotly')
-    R -e "install.packages('dplyr')
+    R -e "install.packages('DT')"
+    R -e "install.packages('knitr')"
+    R -e "install.packages('stringr')"
+    R -e "install.packages('tidyverse')"
+    R -e "install.packages('plotly')"
+    R -e "install.packages('dplyr')"
 
