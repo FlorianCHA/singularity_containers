@@ -56,7 +56,7 @@ From: ubuntu:18.04
 
 # Configure tools with data base
     cd /usr/local/RepeatMasker
-    perl ./configure -trf_prgm /usr/bin/trf -hmmer_dir /usr/local/bin/ -default_search_engine=hmmer -libdir=/usr/local/RepeatMasker/Libraries/
+    perl ./configure -trf_prgm /usr/bin/trf -hmmer_dir /usr/local/bin/ -rmblast_dir /usr/local/rmblast-2.10.0/ --default_search_engine=hmmer -libdir=/usr/local/RepeatMasker/Libraries/
 
 %environment
     export PATH=//usr/local/RepeatMasker/:$PATH
