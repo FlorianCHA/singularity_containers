@@ -17,8 +17,8 @@ From: ubuntu:18.04
     ##For AUGUSTUS
         apt install -y libboost-iostreams-dev zlib1g-dev --fix-missing
         apt install -y libgsl-dev libboost-graph-dev libsuitesparse-dev liblpsolve55-dev libsqlite3-dev libmysql++-dev
-        apt install -y libbamtools-dev
-        apt install -y libboost-all-dev
+        apt install -y bamtools libbamtools-dev
+        apt install -y libboost-all-dev libssl-dev libcurl3-dev
 
     ##For samtools
         apt install -y libbz2-dev liblzma-dev
