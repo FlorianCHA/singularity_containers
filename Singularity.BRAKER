@@ -51,15 +51,15 @@ From: ubuntu:18.04
     ## Augustus
         git clone https://github.com/Gaius-Augustus/Augustus.git  /tools/augustus
         cd /tools
-        wget http://augustus.gobics.de/binaries/augustus.2.5.5.tar.gz
-        tar -xzf augustus.2.5.5.tar.gz
-        cd augustus.2.5.5
+        wget http://bioinf.uni-greifswald.de/augustus/binaries/augustus.current.tar.gz
+        tar -xzf augustus.current.tar.gz
+        cd augustus-3.3.3
         cd src
         make
 
     ## GeneMark
         cd /tools
-        wget  http://topaz.gatech.edu/GeneMark/tmp/GMtool_JCw5b/genemark_hmm_euk_linux_64.tar.gz
+        wget  http://topaz.gatech.edu/GeneMark/tmp/GMtool_KMRrE/genemark_hmm_euk_linux_64.tar.gz
         tar xvf genemark_hmm_euk_linux_64.tar.gz
         rm genemark_hmm_euk_linux_64.tar.gz
         cd genemark_hmm_euk_linux_64
@@ -82,13 +82,13 @@ From: ubuntu:18.04
         mv magnaporthe_oryzae.git magnaporthe_oryzae
 
     ## Exonerate
-    cd /tools
-    wget http://ftp.ebi.ac.uk/pub/software/vertebrategenomics/exonerate/exonerate-2.2.0-x86_64.tar.gz
-    gunzip exonerate-2.2.0-x86_64.tar.gz
-    tar xvf exonerate-2.2.0-x86_64.tar
-    chmod 777 exonerate-2.2.0-x86_64
-    chmod 777 exonerate-2.2.0-x86_64/bin
-    chmod 777 exonerate-2.2.0-x86_64/bin/*
+        cd /tools
+        wget http://ftp.ebi.ac.uk/pub/software/vertebrategenomics/exonerate/exonerate-2.2.0-x86_64.tar.gz
+        gunzip exonerate-2.2.0-x86_64.tar.gz
+        tar xvf exonerate-2.2.0-x86_64.tar
+        chmod 777 exonerate-2.2.0-x86_64
+        chmod 777 exonerate-2.2.0-x86_64/bin
+        chmod 777 exonerate-2.2.0-x86_64/bin/*
 
 
 # Install of R and Rmarckdown for report of Assembly pipeline
@@ -115,9 +115,9 @@ From: ubuntu:18.04
 %environment
      export PATH=/tools/gm_et_linux_64/gmes_petap:$PATH
      export LANG=C
-     export AUGUSTUS_CONFIG_PATH=/tools/augustus.2.5.5/config/
-     export PATH=/tools/augustus.2.5.5/bin:$PATH
+     export AUGUSTUS_CONFIG_PATH=/tools/augustus-3.3.3/config/
+     export PATH=/tools/augustus-3.3.3/bin:$PATH
      export PATH=/tools/augustus/scripts:/tools/BRAKER-2.1.2/scripts:$PATH
-     export AUGUSTUS_BIN_PATH=/tools/augustus.2.5.5/bin
+     export AUGUSTUS_BIN_PATH=/tools/augustus-3.3.3/bin
      export GENEMARK_PATH=/tools/genemark_hmm_euk_linux_64/gmes_petap
      export PATH=/tools/exonerate-2.2.0-x86_64/bin/:$PATH
