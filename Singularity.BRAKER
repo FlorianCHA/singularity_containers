@@ -63,10 +63,10 @@ From: ubuntu:18.04
 
     ## GeneMark
         cd /tools
-        wget  http://topaz.gatech.edu/GeneMark/tmp/GMtool__Qmpa/genemark_hmm_euk_linux_64.tar.gz
-        tar xvf genemark_hmm_euk_linux_64.tar.gz
-        rm genemark_hmm_euk_linux_64.tar.gz
-        cd genemark_hmm_euk_linux_64
+        wget  http://topaz.gatech.edu/GeneMark/tmp/GMtool_e3I47/gmes_linux_64.tar.gz
+        tar xvf gmes_linux_64.tar.gz
+        rm gmes_linux_64.tar.gz
+        cd gmes_linux_64
         #Install perl dependencies
         echo 'export LANG=C' >>$SINGULARITY_ENVIRONMENT
         cpan App::cpanminus
@@ -98,6 +98,6 @@ From: ubuntu:18.04
      export PATH=/tools/augustus/bin:$PATH
      export PATH=/tools/augustus/scripts:/tools/BRAKER-2.1.2/scripts:$PATH
      export AUGUSTUS_BIN_PATH=/tools/augustus/bin
-     export GENEMARK_PATH=/tools/genemark_hmm_euk_linux_64/gmes_petap
+     export GENEMARK_PATH=/tools/gmes_linux_64/gmes_petap
      export PATH=/tools/exonerate-2.2.0-x86_64/bin/:$PATH
      export AUGUSTUS_SCRIPTS_PATH=/tools/augustus/scripts/
