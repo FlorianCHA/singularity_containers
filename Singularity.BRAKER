@@ -81,9 +81,6 @@ From: ubuntu:18.04
         wget https://github.com/Gaius-Augustus/BRAKER/archive/v2.1.2.tar.gz
         tar xvf v2.1.2.tar.gz
         rm v2.1.2.tar.gz
-        cd /tools/augustus/config/species/
-        wget https://github.com/FlorianCHA/magnaporthe_oryzae.git
-        mv magnaporthe_oryzae.git magnaporthe_oryzae
 
     ## Exonerate
         cd /tools
@@ -103,3 +100,4 @@ From: ubuntu:18.04
      export AUGUSTUS_BIN_PATH=/tools/augustus/bin
      export GENEMARK_PATH=/tools/genemark_hmm_euk_linux_64/gmes_petap
      export PATH=/tools/exonerate-2.2.0-x86_64/bin/:$PATH
+     export AUGUSTUS_SCRIPTS_PATH=/tools/augustus/scripts/
