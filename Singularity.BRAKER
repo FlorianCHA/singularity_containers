@@ -59,7 +59,7 @@ From: ubuntu:18.04
         cd src
         make
         cd /tools/augustus/auxprogs
-        cd *; make
+        cd */ ; make
 
     ## GeneMark
         cd /tools
