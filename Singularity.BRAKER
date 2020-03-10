@@ -58,8 +58,8 @@ From: ubuntu:18.04
         cd augustus
         cd src
         make
-        cd /tools/augustus/auxprogs/bam2hints
-        make
+        cd /tools/augustus/auxprogs
+        cd *; make
 
     ## GeneMark
         cd /tools
@@ -98,6 +98,6 @@ From: ubuntu:18.04
      export PATH=/tools/augustus/bin:$PATH
      export PATH=/tools/augustus/scripts:/tools/BRAKER-2.1.2/scripts:$PATH
      export AUGUSTUS_BIN_PATH=/tools/augustus/bin
-     export GENEMARK_PATH=/tools/gmes_linux_64/gmes_petap
+     export GENEMARK_PATH=/tools/gmes_linux_64/gmes_petap.pl
      export PATH=/tools/exonerate-2.2.0-x86_64/bin/:$PATH
      export AUGUSTUS_SCRIPTS_PATH=/tools/augustus/scripts/
