@@ -63,7 +63,7 @@ From: ubuntu:18.04
 
     ## GeneMark
         cd /tools
-        wget  http://topaz.gatech.edu/GeneMark/tmp/GMtool_rKn9w/genemark_hmm_euk_linux_64.tar.gz
+        wget  http://topaz.gatech.edu/GeneMark/tmp/GMtool__Qmpa/genemark_hmm_euk_linux_64.tar.gz
         tar xvf genemark_hmm_euk_linux_64.tar.gz
         rm genemark_hmm_euk_linux_64.tar.gz
         cd genemark_hmm_euk_linux_64
