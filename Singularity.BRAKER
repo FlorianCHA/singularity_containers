@@ -69,7 +69,7 @@ From: ubuntu:18.04
         tar xvf gmes_linux_64.tar.gz
         rm gmes_linux_64.tar.gz
         cd gmes_linux_64
-        Install perl dependencies
+        #Install perl dependencies
         echo 'export LANG=C' >>$SINGULARITY_ENVIRONMENT
 
 
