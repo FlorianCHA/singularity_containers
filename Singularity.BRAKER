@@ -66,7 +66,6 @@ From: ubuntu:18.04
     ## GeneMark
         cd /tools
         wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_DAfA0/gmes_linux_64.tar.gz
-        wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_DAfA0/gmes_linux_64.tar.gz
         tar xvf gmes_linux_64.tar.gz
         rm gmes_linux_64.tar.gz
         cd gmes_linux_64
@@ -79,9 +78,7 @@ From: ubuntu:18.04
 
     ## Braker
         cd /tools
-        wget https://github.com/Gaius-Augustus/BRAKER/archive/v2.1.2.tar.gz
-        tar xvf v2.1.2.tar.gz
-        rm v2.1.2.tar.gz
+        git clone https://github.com/Gaius-Augustus/BRAKER.git
 
     ## Exonerate
         cd /tools
@@ -97,7 +94,7 @@ From: ubuntu:18.04
      export LANG=C
      export AUGUSTUS_CONFIG_PATH=/tools/augustus/config/
      export PATH=/tools/augustus/bin:$PATH
-     export PATH=/tools/augustus/scripts:/tools/BRAKER-2.1.2/scripts:$PATH
+     export PATH=/tools/augustus/scripts:/tools/BRAKER/scripts:$PATH
      export AUGUSTUS_BIN_PATH=/tools/augustus/bin
      export GENEMARK_PATH=/tools/gmes_linux_64/gmes_petap.pl
      export PATH=/tools/exonerate-2.2.0-x86_64/bin/:$PATH
