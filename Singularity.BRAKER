@@ -20,7 +20,7 @@ From: ubuntu:18.04
         apt install -y bamtools libbamtools-dev
         apt install -y libboost-all-dev libssl-dev libcurl3-dev
         cpan App::cpanminus
-        cpanm YAML File::Spec::Functions Hash::Merge List::Util Logger::Simple \
+        cpanm YAML File::Spec::Functions Hash::Merge List::Util Logger::Simple List::MoreUtils Math::Utils\
           Module::Load::Conditional Parallel::ForkManager POSIX Scalar::Util::Numeric File::Which File::HomeDir
 
     ##For samtools
