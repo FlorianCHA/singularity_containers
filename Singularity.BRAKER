@@ -19,6 +19,7 @@ From: ubuntu:18.04
         apt install -y libgsl-dev libboost-graph-dev libsuitesparse-dev liblpsolve55-dev libsqlite3-dev libmysql++-dev
         apt install -y bamtools libbamtools-dev
         apt install -y libboost-all-dev libssl-dev libcurl3-dev
+	apt install -y cdbfasta
         cpan App::cpanminus
         cpanm YAML File::Spec::Functions Hash::Merge List::Util Logger::Simple List::MoreUtils Math::Utils\
           Module::Load::Conditional Parallel::ForkManager POSIX Scalar::Util::Numeric File::Which File::HomeDir
@@ -53,6 +54,7 @@ From: ubuntu:18.04
 
     ## Augustus
         git clone https://github.com/Gaius-Augustus/Augustus.git  /tools/augustus
+
         cd /tools
         #wget http://bioinf.uni-greifswald.de/augustus/binaries/augustus.current.tar.gz
         #tar -xzf augustus.current.tar.gz
