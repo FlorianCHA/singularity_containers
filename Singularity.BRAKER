@@ -67,7 +67,7 @@ From: ubuntu:18.04
 
     ## GeneMark
         cd /tools
-        wgethttp://topaz.gatech.edu/GeneMark/tmp/GMtool_eVKlz/gmes_linux_64.tar.gz
+        wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_eVKlz/gmes_linux_64.tar.gz
         tar xvf gmes_linux_64.tar.gz
         rm gmes_linux_64.tar.gz
         cd gmes_linux_64
