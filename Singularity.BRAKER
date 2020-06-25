@@ -67,7 +67,7 @@ From: ubuntu:18.04
 
     ## GeneMark
         cd /tools
-        wget http://topaz.gatech.edu/GeneMark/tmp/GMtool__AGG3/gmes_linux_64.tar.gz
+        wgethttp://topaz.gatech.edu/GeneMark/tmp/GMtool_eVKlz/gmes_linux_64.tar.gz
         tar xvf gmes_linux_64.tar.gz
         rm gmes_linux_64.tar.gz
         cd gmes_linux_64
@@ -98,6 +98,6 @@ From: ubuntu:18.04
      export PATH=/tools/augustus/bin:$PATH
      export PATH=/tools/augustus/scripts:/tools/BRAKER/scripts:$PATH
      export AUGUSTUS_BIN_PATH=/tools/augustus/bin
-     export GENEMARK_PATH=/tools/gmes_linux_64/gmes_petap.pl
+     export GENEMARK_PATH=/tools/gmes_linux_64/
      export PATH=/tools/exonerate-2.2.0-x86_64/bin/:$PATH
      export AUGUSTUS_SCRIPTS_PATH=/tools/augustus/scripts/
