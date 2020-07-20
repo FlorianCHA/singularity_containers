@@ -16,13 +16,16 @@ From: ubuntu:18.04
     apt update
     apt install -y libpng16-16 libblas3 libblas-dev liblapack-dev liblapack3 libreadline7 r-recommended r-doc-html
 
+
     ## Add repository for download latest version of R
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9
     add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/"
+    locale-gen fr_FR.UTF-8
     apt update
 
     ## Install R
     apt install -y r-base-core pandoc
+
 
     ## Install RMarkdown and TinyTeX
     R --slave -e 'install.packages(c("rmarkdown","tinytex"))'
@@ -34,3 +37,17 @@ From: ubuntu:18.04
     R -e "install.packages('plotly')"
     R -e "install.packages('dplyr')"
     R -e "install.packages('optparse')"
+
+%environment
+	export LANG=fr_FR.UTF-8
+	export LC_ALL=fr_FR.UTF-8
+	LANG="fr_FR.UTF-8"
+	export LC_COLLATE="fr_FR.UTF-8"
+	export LC_CTYPE="fr_FR.UTF-8"
+	export LC_MESSAGES="fr_FR.UTF-8"
+	export LC_MONETARY="fr_FR.UTF-8"
+	export LC_NUMERIC="fr_FR.UTF-8"
+	export LC_TIME="fr_FR.UTF-8"
+	export LC_PAPER="fr_FR.UTF-8"
+	export LC_MEASUREMENT="fr_FR.UTF-8"
+
