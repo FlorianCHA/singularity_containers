@@ -13,6 +13,9 @@ From: ubuntu:18.04
 
     apt update
     apt install build-essential wget git autoconf cmake -y
+    apt install -y software-properties-common locales
+    LC_ALL=fr_FR.UTF-8
+    locale-gen fr_FR.UTF-8
 
     ##For AUGUSTUS
         apt install -y libboost-iostreams-dev zlib1g-dev moreutils --fix-missing
@@ -68,7 +71,7 @@ From: ubuntu:18.04
 
     ## GeneMark
         cd /tools
-        wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_eVKlz/gmes_linux_64.tar.gz
+        wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_OAEwq/gmes_linux_64.tar.gz
         tar xvf gmes_linux_64.tar.gz
         rm gmes_linux_64.tar.gz
         cd gmes_linux_64
@@ -94,7 +97,17 @@ From: ubuntu:18.04
 
 %environment
      export PATH=/tools/gm_et_linux_64/gmes_petap:$PATH
-     export LANG=C
+     export LANG=fr_FR.UTF-8
+     export LC_ALL=fr_FR.UTF-8
+     LANG="fr_FR.UTF-8"
+     export LC_COLLATE="fr_FR.UTF-8"
+     export LC_CTYPE="fr_FR.UTF-8"
+     export LC_MESSAGES="fr_FR.UTF-8"
+     export LC_MONETARY="fr_FR.UTF-8"
+     export LC_NUMERIC="fr_FR.UTF-8"
+     export LC_TIME="fr_FR.UTF-8"
+     export LC_PAPER="fr_FR.UTF-8"
+     export LC_MEASUREMENT="fr_FR.UTF-8"
      export AUGUSTUS_CONFIG_PATH=/tools/augustus/config/
      export PATH=/tools/augustus/bin:$PATH
      export PATH=/tools/augustus/scripts:/tools/BRAKER/scripts:$PATH
