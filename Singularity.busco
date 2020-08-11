@@ -1,0 +1,122 @@
+BootStrap: docker
+From: ubuntu:18.04
+
+%labels
+    Florian CHARRIAT - Hisat2 tools containers with samtools softare
+%help
+Run the hisat2 tools
+
+%post
+
+# Install dependecies for tools
+
+    apt update
+    apt install build-essential wget git autoconf cmake -y
+    apt install -y software-properties-common locales python3 python3-pip python3-setuptools
+    LC_ALL=fr_FR.UTF-8
+    locale-gen fr_FR.UTF-8
+
+    # use python3
+    update-alternatives --install /usr/local/bin/python python /usr/bin/python3 1
+
+    ##For AUGUSTUS
+        apt install -y libboost-iostreams-dev zlib1g-dev moreutils --fix-missing
+        apt install -y libgsl-dev libboost-graph-dev libsuitesparse-dev liblpsolve55-dev libsqlite3-dev libmysql++-dev
+        apt install -y bamtools libbamtools-dev ncbi-blast+
+        apt install -y libboost-all-dev libssl-dev libcurl3-dev
+	apt install -y cdbfasta hmmer prodigal
+        cpan App::cpanminus
+        cpanm YAML File::Spec::Functions Hash::Merge List::Util Logger::Simple List::MoreUtils Math::Utils\
+          Module::Load::Conditional Parallel::ForkManager POSIX Scalar::Util::Numeric File::Which File::HomeDir\
+	  MCE::Mutex Thread::Queue Thread::Queue
+
+    ##For samtools
+        apt install -y libbz2-dev liblzma-dev
+        apt install -y libncurses5-dev
+
+
+# Build tools
+
+    mkdir /tools
+
+    ## htslib for samtools
+        git clone https://github.com/samtools/htslib.git /tools/htslib
+        cd /tools/htslib
+        autoheader
+        autoconf
+        ./configure
+        make
+        make install
+
+    ## Samtools
+        git clone https://github.com/samtools/samtools.git /tools/samtools
+        cd /tools/samtools
+        autoheader
+        autoconf -Wno-syntax
+        ./configure
+        make
+        make install
+        export TOOLDIR="/tools/"
+
+    # bcftools
+    cd /tools
+    git clone https://github.com/samtools/bcftools.git
+    cd bcftools
+    autoheader && autoconf && ./configure && make && make install
+
+    # Tabix
+    cd /tools
+    git clone https://github.com/samtools/tabix.git
+    cd tabix
+    make
+
+    #Augustus
+        git clone https://github.com/Gaius-Augustus/Augustus.git  /tools/augustus
+
+        cd /tools
+        #wget http://bioinf.uni-greifswald.de/augustus/binaries/augustus.current.tar.gz
+        #tar -xzf augustus.current.tar.gz
+        #cd augustus-3.3.3
+        mkdir -p /tools/augustus/bin
+        cd augustus
+        cd src
+        make
+        for elt in aln2wig bam2hints bam2wig compileSpliceCands filterBam homGeneMapping joingenes; do cd /tools/augustus/auxprogs/$elt; make;done
+
+    # install sepp
+    cd /tools
+    git clone https://github.com/smirarab/sepp.git /sepp
+    cd /sepp
+    git checkout -f 4.3.10
+    git submodule update --init --recursive
+    python3 setup.py config
+    python3 setup.py install
+
+    # build variables
+    export AUGUSTUS_CONFIG_PATH=/tools/augustus/config/
+    export BUSCO_CONFIG_FILE="/tools/busco/config/config.ini"
+    export PATH=/tools/augustus/bin:$PATH
+    export PATH=/tools/augustus/scripts:/tools/BRAKER/scripts:$PATH
+
+    # BUSCO
+    pip3 install biopython
+    git clone https://gitlab.com/ezlab/busco.git /tools/busco
+    cd /tools/busco
+    git checkout -f  4.0.4 
+    git submodule update --init --recursive
+    python3 setup.py install
+    mv /tools/busco/config/config.ini /tools/busco/config/config.ini.default
+    cd /tools/busco/scripts
+    ls
+    ./busco_configurator.py /tools/busco/config/config.ini.default /tools/busco/config/config.ini
+
+%environment
+
+    export AUGUSTUS_CONFIG_PATH=/tools/augustus/config/
+    export BUSCO_CONFIG_FILE="/tools/busco/config/config.ini"
+    export PATH=/tools/augustus/bin:$PATH
+    export PATH=/tools/augustus/scripts:/tools/BRAKER/scripts:$PATH
+    export LC_ALL=C
+
+%runscript
+    busco "$*"
