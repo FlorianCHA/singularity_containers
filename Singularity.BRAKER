@@ -70,8 +70,10 @@ From: ubuntu:18.04
         for elt in aln2wig bam2hints bam2wig compileSpliceCands filterBam homGeneMapping joingenes; do cd /tools/augustus/auxprogs/$elt; make;done
 
     ## GeneMark
+	apt install -y diamond-aligner diamond
         cd /tools
-        wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_tSkHc/gmes_linux_64.tar.gz
+	git clone https://github.com/gatech-genemark/ProtHint.git
+        wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_Fzykf/gmes_linux_64.tar.gz
         tar xvf gmes_linux_64.tar.gz
         rm gmes_linux_64.tar.gz
         cd gmes_linux_64
@@ -113,5 +115,6 @@ From: ubuntu:18.04
      export PATH=/tools/augustus/scripts:/tools/BRAKER/scripts:$PATH
      export AUGUSTUS_BIN_PATH=/tools/augustus/bin
      export GENEMARK_PATH=/tools/gmes_linux_64/
+     export PROTHINT_PATH=/tools/ProtHint/bin/
      export PATH=/tools/exonerate-2.2.0-x86_64/bin/:$PATH
      export AUGUSTUS_SCRIPTS_PATH=/tools/augustus/scripts/
