@@ -12,7 +12,7 @@ From: ubuntu:18.04
 # Installation python & dependencies
     apt install -y python3.7 python3-pip
     python3.7 -m pip install biopython
-
+    python3.7 -m pip install pandas
 
 %runscript
     python3  "$*"
